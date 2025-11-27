@@ -35,6 +35,10 @@ Production plugins are installed from the `plugins/` directory after being regis
 
 After installing a plugin, its commands become available as slash commands and its agents can be invoked by Claude when relevant.
 
+## Available Plugins
+
+- [devkit](plugins/devkit/README.md) - Injects steering context into subagents
+
 ## Development
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on creating new plugins.
