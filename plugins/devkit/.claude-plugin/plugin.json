@@ -1,9 +1,12 @@
 {
   "name": "devkit",
-  "version": "0.1.0",
-  "description": "Development toolkit plugin",
+  "version": "1.0.0",
+  "description": "Development toolkit with AI-powered specification, implementation, testing, and git workflows",
   "author": {
-    "name": "Team Name",
-    "email": "team@company.com"
-  }
+    "name": "Agronod",
+    "email": "team@agronod.com"
+  },
+  "skills": ["./skills/"],
+  "agents": ["./agents/"],
+  "hooks": "./hooks/hooks.json"
 }
