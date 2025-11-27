@@ -125,14 +125,6 @@ Hooks are JSON configurations that run commands on events:
 
 4. Submit a pull request
 
-## Validation
-
-Validate your plugin structure:
-
-```shell
-claude plugin validate plugins/your-plugin
-```
-
 ## Best Practices
 
 - Keep commands focused on single tasks
