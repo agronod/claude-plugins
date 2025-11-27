@@ -1,0 +1,11 @@
+{
+  "name": "git-workflow",
+  "version": "1.0.0",
+  "description": "Git workflow automation: PR creation, branch management",
+  "author": {
+    "name": "Team Name",
+    "email": "team@company.com"
+  },
+  "commands": ["./commands/"],
+  "agents": ["./agents/"]
+}

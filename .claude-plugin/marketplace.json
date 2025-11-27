@@ -1,0 +1,15 @@
+{
+  "name": "agronod-plugins",
+  "owner": {
+    "name": "Agronod",
+    "email": "team@agronod.com"
+  },
+  "plugins": [
+    {
+      "name": "devkit",
+      "source": "./plugins/devkit",
+      "description": "Development toolkit plugin",
+      "version": "0.1.0"
+    }
+  ]
+}

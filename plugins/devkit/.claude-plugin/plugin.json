@@ -1,0 +1,9 @@
+{
+  "name": "devkit",
+  "version": "0.1.0",
+  "description": "Development toolkit plugin",
+  "author": {
+    "name": "Team Name",
+    "email": "team@company.com"
+  }
+}
