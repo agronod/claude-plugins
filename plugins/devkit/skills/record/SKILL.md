@@ -79,18 +79,14 @@ You will now CONTINUOUSLY maintain scratchpads for the mission without being rem
 - Brief notification when updating: "📝 Recorded [what]"
 - Focus on what matters for the mission
 
-## Execution Reminder
+## File Location
 
-**CRITICAL**:
-- Focus on the mission
-- Record what's actually useful
-- Keep it organized but not over-engineered
-- For continuous mode: maintain throughout the session
-- For immediate mode: complete the task now
-
-**Location**: All scratchpads in `.agents/scratchpads/` directory
+**Path**: `.agents/scratchpads/` directory
 **Git**: Automatically excluded from version control (.agents/ should be in .gitignore)
 
----
+## Quick Reference
 
-**Your task**: Create and maintain scratchpads for the user's recording mission.
+1. ENSURE `.agents/scratchpads/` directory exists
+2. ORGANIZE files based on strategy (single, topic-based, timestamped)
+3. **Immediate mode**: Complete the recording task now
+4. **Continuous mode**: Maintain scratchpads throughout the session

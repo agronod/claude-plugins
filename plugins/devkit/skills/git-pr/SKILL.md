@@ -97,8 +97,18 @@ If confirm mode is enabled (default):
 Target branch: [target] → [head]
 ```
 
-**ASK**: "Create pull request with this description? (y/n) or provide feedback to refine:"
-**WAIT** for user response and refine based on feedback if provided
+**USE AskUserQuestion** to confirm:
+- Question: "Create pull request with this description?"
+- Options:
+  - "Yes, create PR" - Create the pull request
+  - "Cancel" - Abort PR creation
+
+**IF** user provides custom input (via "Other"):
+  **NEVER** create PR directly - custom input means the user wants to refine, not confirm
+  **ADJUST** the description based on their feedback
+  **PRESENT** the updated description in full
+  **CALL AskUserQuestion again** with the same options
+  **LOOP** until user explicitly selects "Yes, create PR" or "Cancel"
 
 If confirm is false:
 **PROCEED** directly to PR creation (auto-approve mode)
@@ -170,20 +180,13 @@ If confirm is false:
 - Balance technical accuracy with readability
 - Make the PR description easy to scan and understand
 
-## Execution Reminder
+## Quick Reference
 
-**YOU MUST**:
-
-1. USE your git analysis capabilities to gather repository context
-2. DETECT the git provider from remote URL
-3. READ the PR template and understand its structure
-4. ANALYZE the diff to extract information the template needs
-5. GENERATE a complete PR description following the template
-6. VALIDATE prerequisites for PR creation
-7. CREATE the actual pull request using appropriate provider tools
-8. HANDLE the complete workflow from analysis to PR URL
-9. DO NOT just describe these steps - ACTUALLY EXECUTE THE FULL WORKFLOW
-
----
-
-**IMPORTANT**: These are INSTRUCTIONS to EXECUTE using your capabilities. Analyze, generate, and create the PR NOW.
+1. IDENTIFY head and target branches
+2. DETECT git provider from remote URL
+3. CHECK for existing PR (update vs create mode)
+4. ANALYZE diff and READ PR template
+5. GENERATE description following template structure
+6. PRESENT to user and WAIT for confirmation
+7. VALIDATE prerequisites (branch pushed, commits exist)
+8. CREATE or UPDATE the pull request

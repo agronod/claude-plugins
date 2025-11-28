@@ -122,32 +122,35 @@ type: description
 **PRESENT** your proposed commit to the user:
 - Display the complete formatted commit message
 - Show the file count and line change statistics
-- Ask for confirmation to proceed
 
-**WAIT** for the user's response before proceeding.
+**USE AskUserQuestion** to confirm:
+- Question: "Proceed with this commit?"
+- Options:
+  - "Yes, commit" - Create the commit as shown
+  - "Cancel" - Abort the commit
 
 ### Action 5: Create Commit
 
-**UPON** receiving user confirmation (yes/y):
+**IF** user selects "Yes, commit":
   **CREATE** the git commit using your git commit capability with the generated message
   **VERIFY** the commit was created successfully using your git log capability
   **DISPLAY** the commit hash and summary to confirm success
 
-**IF** user declines or requests changes:
-  **ASK** for their preferred commit message or modifications
-  **ADJUST** accordingly and proceed with their input
+**IF** user provides custom input (via "Other"):
+  **NEVER** commit directly - custom input means the user wants to refine, not confirm
+  **ADJUST** the commit message based on their feedback
+  **PRESENT** the updated commit message in full
+  **CALL AskUserQuestion again** with the same options
+  **LOOP** until user explicitly selects "Yes, commit" or "Cancel"
 
-## Execution Reminder
+**IF** user selects "Cancel":
+  **INFORM** the user that the commit was aborted
+  **STOP** - do not create the commit
 
-**YOU MUST** use your git-related capabilities to:
-1. CHECK repository status and STAGE files if needed
+## Quick Reference
+
+1. CHECK repository status for staged files
 2. ANALYZE the actual changes through diff examination
-3. GENERATE an appropriate conventional commit message based on the changes
+3. GENERATE an appropriate conventional commit message
 4. WAIT for user confirmation before creating the commit
 5. CREATE the commit only after receiving approval
-
-**REMEMBER**: YOU are the agent performing these actions. Use YOUR built-in git capabilities to execute each step. Do not output bash commands for the user to run - YOU execute the necessary operations directly.
-
----
-
-**Your task**: Create a conventional commit for the current repository changes using YOUR git capabilities.

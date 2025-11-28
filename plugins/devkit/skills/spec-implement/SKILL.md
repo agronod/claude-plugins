@@ -166,12 +166,16 @@ If review mode is enabled (default):
 - Present task checklist
 - List dependencies
 
-**ASK**: "Approve this detailed implementation plan? (y/n) or provide feedback:"
+**USE AskUserQuestion** to confirm:
+- Question: "Approve this implementation plan?"
+- Options:
+  - "Yes, implement" - Proceed with implementation
+  - "Cancel" - Abort implementation
 
 Based on response:
-- If 'y': Proceed to Phase 2
-- If 'n': Cancel implementation
-- If feedback: Refine the plan and update implementation
+- If "Yes, implement": Proceed to Phase 2
+- If "Cancel": Stop implementation
+- If custom input (via "Other"): **NEVER** implement directly - refine the plan, present updated plan in full, call AskUserQuestion again, and loop until user selects "Yes, implement" or "Cancel"
 
 ### Phase 2: Code Implementation
 
@@ -225,23 +229,15 @@ Based on response:
 - Show completed task checklist
 - Suggest next steps (testing, formatting)
 
-## Execution Reminder
+## Quick Reference
 
-**TWO-PHASE APPROACH**:
-
-**PHASE 1 - Detailed Planning**:
-1. READ the plan specification to understand requirements
-2. CREATE detailed implementation plan with file breakdown and pseudo-code
-3. CREATE implementation file with the detailed plan
+**Phase 1 - Planning**:
+1. READ the plan specification from `.agents/specs/`
+2. CREATE detailed implementation plan with file structure and pseudo-code
+3. CREATE `3-implementation.md` with the detailed plan
 4. GET approval before proceeding (if review mode enabled)
 
-**PHASE 2 - Implementation**:
+**Phase 2 - Implementation**:
 5. IMPLEMENT each file based on the detailed plan
 6. CREATE all necessary files with full working code
 7. UPDATE status and checklist in the spec
-
-**REMEMBER**: First plan in detail, then implement. This ensures clear understanding before coding.
-
----
-
-**IMPORTANT**: These are COMMANDS to EXECUTE. Use your file manipulation capabilities NOW.

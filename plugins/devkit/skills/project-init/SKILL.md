@@ -36,7 +36,8 @@ After creating CLAUDE.md:
 3. **REPORT**: completion status
 
 **RESPOND** with:
-```
+
+```text
 ✅ Project initialized
 
 Created:
@@ -45,13 +46,8 @@ Created:
 Now running context-update to analyze project and generate documentation...
 ```
 
-## Execution Reminder
+## Quick Reference
 
-**YOU MUST**:
-1. WRITE CLAUDE.md file using your file creation capability
-2. INVOKE context-update skill after CLAUDE.md is created
-3. DO NOT just show the template - ACTUALLY CREATE THE FILES
-
----
-
-**IMPORTANT**: These are COMMANDS to EXECUTE. Create the actual files on disk.
+1. READ the CLAUDE.md template from plugin resources
+2. CREATE CLAUDE.md in the project directory
+3. INVOKE context-update skill to generate .agents/steering documentation

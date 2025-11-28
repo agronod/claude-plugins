@@ -74,21 +74,9 @@ Methods at your disposal include but are not limited to:
    - Explain WHY these methods fit THIS problem
    - Provide clear next steps
 
-## Execution Reminder
-
-**CRITICAL**:
-- Think ULTRA HARD - don't default to standard patterns
-- Methods can be combined in ANY order and ANY combination
-- Focus on what will actually help THIS specific problem
-- If stuck, switching thinking modes often helps
-- Success comes from matching methods to the mission
-
 **DO NOT**:
+
 - Force a structured response format
 - Recommend all methods - only what's relevant
 - Use categories if they don't fit naturally
 - Default to standard workflows without thinking
-
----
-
-**Your task**: Think ultra hard and recommend the optimal method combination for the user's specific mission.

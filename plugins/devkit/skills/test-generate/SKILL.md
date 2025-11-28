@@ -230,8 +230,18 @@ External dependencies to mock:
 - [list of identified external deps]
 ```
 
-**ASK**: "Generate these tests? (y/n)"
-**WAIT** for user response before proceeding
+**USE AskUserQuestion** to confirm:
+- Question: "Generate these tests?"
+- Options:
+  - "Yes, generate" - Create the test files
+  - "Cancel" - Abort test generation
+
+**IF** user provides custom input (via "Other"):
+  **NEVER** generate tests directly - custom input means the user wants to refine, not confirm
+  **ADJUST** the strategy based on their feedback
+  **PRESENT** the updated test strategy in full
+  **CALL AskUserQuestion again** with the same options
+  **LOOP** until user explicitly selects "Yes, generate" or "Cancel"
 
 ### Action 3: Generate or Extend Test Files
 
@@ -262,15 +272,10 @@ External dependencies to mock:
 6. **Realistic Test Data**: Use complete, valid data that satisfies all validations
 7. **Integration Over Isolation**: Test how components work together
 
-## Execution Reminder
+## Quick Reference
 
-**YOU MUST**:
-1. ANALYZE code complexity before generating tests
+1. ANALYZE code complexity (cyclomatic, nesting, dependencies)
 2. SELECT optimal test strategy based on analysis
-3. CREATE real test files with strategic coverage
-4. PRIORITIZE high-value test cases
-5. LEARN from test execution results
-
----
-
-**IMPORTANT**: Generate strategically valuable tests based on complexity analysis.
+3. PRESENT strategy to user and WAIT for confirmation
+4. CREATE test files with strategic coverage
+5. PRIORITIZE integration tests with external-only mocking

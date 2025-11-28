@@ -86,15 +86,10 @@ To create the issue, confirm and I'll use:
 gh issue create --repo agronod/claude-plugins --title "[title]" --body "[body]" --label "[labels]"
 ```
 
-## Execution Reminder
+## Quick Reference
 
-**YOU MUST**:
-1. Actually SEARCH for existing issues in agronod/claude-plugins
+1. SEARCH for existing issues in agronod/claude-plugins
 2. PRESENT links to similar issues if found
 3. GENERATE a clear issue suggestion
 4. WAIT for user confirmation before creating any issue
 5. Only create issues in the agronod/claude-plugins repository
-
----
-
-**Your task**: Search for similar issues, present findings, and suggest a new issue if appropriate.

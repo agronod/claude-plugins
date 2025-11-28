@@ -19,32 +19,35 @@ If the user has already provided context about what they're working on, use that
 
 ### Action 1: Discover Steering Files
 
-**MAP** .agents/steering structure (Priority: 1. tree, 2. find)
+**USE Glob** to find all context files: `.agents/steering/**/*.md`
 
-**IF** .agents/steering doesn't exist:
+**IF** no files found or .agents/steering doesn't exist:
 
 - **mode=quick**: Output "⚠️ No steering files found. Proceeding without project conventions." and continue with your main task.
 - **mode=full**: Use AskUserQuestion to ask "No .agents/steering found. Initialize project context?" with options "Yes, run project-init" and "No, continue without". If yes, invoke project-init skill.
 
 ### Action 2: Select Files Based on Purpose
 
+**IMPORTANT**: Only read `.md` files found by Glob. Never attempt to read directories.
+
 **If a purpose was provided**:
-**Think** about which files are most relevant to the purpose.
+**Think** about which `.md` files from the Glob results are most relevant to the purpose.
 Consider filename keywords, directory structure, and likely content.
 
-**PRIORITIZE** files based on purpose:
+**PRIORITIZE** `.md` files based on purpose:
 
-- Select which files to read given the purpose based on .agents/steering folder structure
+- From the Glob results, select which `.md` files to read based on relevance to the purpose
 
 **If no purpose was provided**:
-Read all .agents/steering files.
+Read all `.md` files found by Glob.
 
 ### Action 3: Load Files
 
-**READ** selected files using PARALLEL execution.
+**READ** selected `.md` files using PARALLEL execution.
 
 **CRITICAL INSTRUCTIONS**:
 
+- **ONLY** read `.md` files from the Glob results - NEVER read directories
 - **INVOKE** multiple Read tools in a SINGLE message for parallel execution
 - **READ** complete files - do NOT use offset or limit parameters
 - **BATCH** all Read operations together for maximum efficiency
@@ -156,20 +159,10 @@ Context ready. Awaiting instruction.
 
 **WAIT** for user instruction - do NOT proceed with the purpose automatically.
 
----
-
-## Execution Reminder
-
-**YOU MUST**:
+## Quick Reference
 
 1. DISCOVER available steering files
 2. SELECT files based on purpose (if provided)
 3. READ files in parallel
 4. **IF mode=quick**: Output brief summary, continue with task
 5. **IF mode=full**: Check session, assess confidence, research if needed, report structured output
-
-**REMEMBER**: YOU are the agent performing these actions. Use YOUR built-in capabilities to execute each step directly.
-
----
-
-**Your task**: Load project context using YOUR file reading and analysis capabilities.

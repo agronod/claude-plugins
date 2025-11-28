@@ -89,11 +89,9 @@ Use the spec-plan skill with folder=[folder-name]
 
 **NOTE**: The spec-plan skill will create `2-plan.md` in the same folder as this requirements file
 
-## Execution Reminder
+## Quick Reference
 
-**CRITICAL REMINDERS**:
-- **ALWAYS CREATE THE FILE** using your file writing capability
-- **ALWAYS REPORT** the saved file path
-- **ALWAYS USE INTERACTIVE MODE** - wait for user responses
-- **NEVER SKIP** the interactive gathering steps
-- **CAPTURE ALL SECTIONS** - feature, examples, documentation, considerations
+1. GATHER requirements interactively (feature, examples, documentation, considerations)
+2. CREATE the spec folder at `.agents/specs/[folder-name]/`
+3. WRITE the PRP file at `1-requirements.md`
+4. WAIT for user responses at each interactive step

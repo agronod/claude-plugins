@@ -178,18 +178,10 @@ interface [Name] {
 3. **Phase 3**: [Polish/optimization - final improvements]
 ```
 
-## Execution Reminder
+## Quick Reference
 
-**YOU MUST**:
-1. ANALYZE to understand WHAT to build and HOW to build it
-2. CREATE the folder structure at `.agents/specs/[folder-name]/`
-3. CREATE a LEAN specification in `2-plan.md` (Summary of work plan, Confidence, Context, Success Criteria)
-4. FOCUS on concrete actions (human validates plan) and clear steps (agent can follow)
-5. SAVE the specification and await user confirmation
-
-**REMEMBER**:
-- Keep it LEAN - only essential sections
-- Summary shows the WORK PLAN (what will be done), not feature description
-- Confidence score with clear indicators of gaps
-- Success criteria as checkboxes
-- This is step 1 of 2 - detailed planning comes in spec-implement
+1. ANALYZE description and INVOKE context-prime for project context
+2. ASSESS confidence in problem understanding (≥0.8 proceed, <0.7 recommend clarification)
+3. CREATE folder structure at `.agents/specs/[folder-name]/`
+4. CREATE lean specification in `2-plan.md`
+5. WAIT for user confirmation before suggesting spec-implement
