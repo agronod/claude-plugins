@@ -7,6 +7,7 @@ description: USE THIS SKILL when users ask to create a pull request, generate PR
 ## Required Information
 
 ### Optional (with defaults)
+
 - **confirm**: Ask for approval before finalizing description. Defaults to true.
 
 ## Instructions
@@ -16,13 +17,15 @@ This skill provides instructions for creating pull requests with structured desc
 ### Action 1: Identify Branches
 
 **IDENTIFY** the branches:
-- **Head branch**: Current branch you're working on (use `git branch --show-current`)
-- **Target branch**: The branch this PR will merge into (use your git capabilities to find where it was created from)
-- **NEVER assume** target branch is main/master - always verify using your git capabilities
+
+- **Head branch**: The current branch you're working on
+- **Target branch**: The immediate parent branch from which this branch was created. Check the commit history to find which branch the parent commit belongs to.
+- **NEVER assume** target branch is main/master - always verify by inspecting the branch history
 
 ### Action 2: Detect Git Provider
 
 **EXTRACT** repository information from git remote:
+
 - Run `git remote get-url origin` to get remote URL
 - Parse URL to identify provider (GitHub, Bitbucket, GitLab, etc.)
 - Extract organization/workspace and repository slug for later use
@@ -30,6 +33,7 @@ This skill provides instructions for creating pull requests with structured desc
 ### Action 2.5: Detect Existing PR
 
 **CHECK** if a pull request already exists for the current branch targeting the base branch:
+
 - Use your git provider capabilities to list pull requests
 - Filter by source branch (current branch) and target branch
 - Check for OPEN state PRs only
@@ -37,16 +41,19 @@ This skill provides instructions for creating pull requests with structured desc
 **DETERMINE** the mode and gather context:
 
 **IF PR exists**:
+
 - Extract PR ID/number
 - **FETCH the current PR description text**
 - **STORE** both PR metadata and description for use in UPDATE mode
 
 **IF no PR exists**:
+
 - Proceed with CREATE mode
 
 ### Action 3: Analyze Diff and Generate Description
 
 **ANALYZE** the complete changes in the PR:
+
 - **RUN** `git diff <target>...<head>` to see all changes included in the PR
 - **EXAMINE** what files were added, modified, or deleted
 - **ANALYZE** the full scope of changes from target to head
@@ -58,6 +65,7 @@ This skill provides instructions for creating pull requests with structured desc
 **GENERATE** description based on detected mode:
 
 **IF UPDATE MODE** (existing PR found):
+
 - **READ** the existing PR description (fetched in Action 2.5)
 - **ANALYZE** the complete diff (target→head) to understand current state
 - **UPDATE** the existing description to reflect the current complete changeset
@@ -66,6 +74,7 @@ This skill provides instructions for creating pull requests with structured desc
 - Follow the template structure for any new sections added
 
 **IF CREATE MODE** (no existing PR):
+
 - **ANALYZE** the complete diff (target→head)
 - **GENERATE** a fresh description following the template structure
 - Create a descriptive title from branch name and commit patterns
@@ -76,9 +85,11 @@ This skill provides instructions for creating pull requests with structured desc
 If confirm mode is enabled (default):
 
 **PRESENT** the generated description to the user:
+
 - Display the raw markdown in a code block to preserve all formatting
 - This ensures checkboxes, special characters, and formatting are visible exactly as they will appear
 - Format as:
+
 ```
 📋 Generated PR Description:
 [Show the complete generated description - raw markdown]
@@ -95,11 +106,13 @@ If confirm is false:
 ### Action 5: Validate PR Prerequisites
 
 **CHECK** prerequisites using your command execution capabilities:
+
 - Ensure the current branch has been pushed to remote
 - Confirm there are commits to include in the PR
 - Detect if a PR already exists for this branch
 
 **VALIDATE** tools and credentials for detected provider:
+
 - Verify required CLI tools or API credentials are available
 - Ensure proper authentication is configured
 - Guide user through setup if prerequisites are missing
@@ -109,12 +122,14 @@ If confirm is false:
 **EXECUTE** based on detected mode:
 
 **IF UPDATE MODE** (existing PR found):
+
 - **UPDATE** the existing pull request using your git provider capabilities
 - Use the PR ID from detection step
 - Apply the generated description
 - Preserve existing metadata (reviewers, labels, etc.)
 
 **IF CREATE MODE** (no existing PR):
+
 - **CREATE** a new pull request using your git provider capabilities
 - Use the generated description as the PR body
 - Apply the auto-generated title from branch and commit analysis
@@ -123,6 +138,7 @@ If confirm is false:
 - Consider marking as draft if changes seem incomplete
 
 **HANDLE** the operation intelligently:
+
 - Parse response and extract PR/MR URL
 - Diagnose issues and guide resolution on failure
 - Learn from errors for future improvements
@@ -130,6 +146,7 @@ If confirm is false:
 ### Action 7: Post-Creation Actions
 
 **PROVIDE** helpful follow-up based on the created PR:
+
 - Display the PR URL prominently
 - Suggest adding reviewers if appropriate
 - Mention CI/CD status checks if applicable
@@ -138,6 +155,7 @@ If confirm is false:
 ## Tone and Style Guidelines
 
 **Follow the template's intent**:
+
 - Each template section has a purpose - understand and fulfill it
 - If a section asks "why", explain motivation and business context
 - If a section asks "what", provide a scannable overview
@@ -145,6 +163,7 @@ If confirm is false:
 - Adapt your analysis depth to match what each section requests
 
 **Overall Tone**:
+
 - Maintain friendly, approachable style
 - Use emojis appropriately (matching the template)
 - Be helpful to reviewers
@@ -154,6 +173,7 @@ If confirm is false:
 ## Execution Reminder
 
 **YOU MUST**:
+
 1. USE your git analysis capabilities to gather repository context
 2. DETECT the git provider from remote URL
 3. READ the PR template and understand its structure

@@ -7,6 +7,7 @@
     "email": "team@agronod.com"
   },
   "skills": ["./skills/"],
+  "commands": ["./commands/"],
   "agents": ["./agents/"],
   "hooks": "./hooks/hooks.json"
 }
