@@ -103,15 +103,24 @@ Target branch: [target] → [head]
   - "Yes, create PR" - Create the pull request
   - "Cancel" - Abort PR creation
 
+**WAIT** for user response. Do NOT proceed until user has answered.
+
+**IF** user selects "Cancel":
+  **INFORM** the user that PR creation was aborted
+  **STOP** - do not create the PR
+
 **IF** user provides custom input (via "Other"):
-  **NEVER** create PR directly - custom input means the user wants to refine, not confirm
+  **NEVER** create PR directly - custom input means the user wants to refine
   **ADJUST** the description based on their feedback
   **PRESENT** the updated description in full
-  **CALL AskUserQuestion again** with the same options
+  **RETURN** to this step - call AskUserQuestion again
   **LOOP** until user explicitly selects "Yes, create PR" or "Cancel"
 
+**IF** user selects "Yes, create PR":
+  **PROCEED** to Action 5
+
 If confirm is false:
-**PROCEED** directly to PR creation (auto-approve mode)
+**SKIP** AskUserQuestion and proceed directly to PR creation (auto-approve mode)
 
 ### Action 5: Validate PR Prerequisites
 

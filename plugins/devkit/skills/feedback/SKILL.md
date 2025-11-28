@@ -72,19 +72,29 @@ gh search issues --repo agronod/claude-plugins "[extracted keywords]"
 **Labels**: [Suggest appropriate labels like: bug, enhancement, documentation, question]
 ```
 
-### Action 4: Guide User to Create Issue
+### Action 4: Confirm with User
 
-**PRESENT** next steps to the user:
+**USE AskUserQuestion** to confirm:
+- Question: "Create this issue in agronod/claude-plugins?"
+- Options:
+  - "Yes, create issue" - Create the issue as shown
+  - "Cancel" - Abort issue creation
 
-```
-Would you like to create this issue in agronod/claude-plugins?
+**WAIT** for user response. Do NOT proceed until user has answered.
 
-If yes, I'll help you create it with the suggested content above.
-If you'd like to modify it first, let me know what changes you'd like.
+**IF** user selects "Cancel":
+  **INFORM** the user that issue creation was cancelled
+  **STOP** - do not create the issue
 
-To create the issue, confirm and I'll use:
-gh issue create --repo agronod/claude-plugins --title "[title]" --body "[body]" --label "[labels]"
-```
+**IF** user provides custom input (via "Other"):
+  **ADJUST** the issue content based on their feedback
+  **PRESENT** the updated issue in full
+  **RETURN** to this step - call AskUserQuestion again
+  **LOOP** until user explicitly selects "Yes, create issue" or "Cancel"
+
+**IF** user selects "Yes, create issue":
+  **CREATE** the issue using: `gh issue create --repo agronod/claude-plugins --title "[title]" --body "[body]" --label "[labels]"`
+  **DISPLAY** the created issue URL
 
 ## Quick Reference
 

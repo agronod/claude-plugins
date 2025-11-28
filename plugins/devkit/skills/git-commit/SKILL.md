@@ -129,23 +129,25 @@ type: description
   - "Yes, commit" - Create the commit as shown
   - "Cancel" - Abort the commit
 
-### Action 5: Create Commit
+**WAIT** for user response. Do NOT proceed until user has answered.
 
-**IF** user selects "Yes, commit":
-  **CREATE** the git commit using your git commit capability with the generated message
-  **VERIFY** the commit was created successfully using your git log capability
-  **DISPLAY** the commit hash and summary to confirm success
-
-**IF** user provides custom input (via "Other"):
-  **NEVER** commit directly - custom input means the user wants to refine, not confirm
-  **ADJUST** the commit message based on their feedback
-  **PRESENT** the updated commit message in full
-  **CALL AskUserQuestion again** with the same options
-  **LOOP** until user explicitly selects "Yes, commit" or "Cancel"
+### Action 5: Handle User Response
 
 **IF** user selects "Cancel":
   **INFORM** the user that the commit was aborted
   **STOP** - do not create the commit
+
+**IF** user provides custom input (via "Other"):
+  **NEVER** commit directly - custom input means the user wants to refine
+  **ADJUST** the commit message based on their feedback
+  **PRESENT** the updated commit message in full
+  **RETURN** to Action 4 - call AskUserQuestion again
+  **LOOP** until user explicitly selects "Yes, commit" or "Cancel"
+
+**IF** user selects "Yes, commit":
+  **CREATE** the git commit with the generated message
+  **VERIFY** the commit was created successfully
+  **DISPLAY** the commit hash and summary to confirm success
 
 ## Quick Reference
 
