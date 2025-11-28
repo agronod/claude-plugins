@@ -13,10 +13,16 @@ DESCRIPTION=$(echo "$INPUT" | jq -r '.tool_input.description // empty')
 # Only inject for Task with Explore or Plan subagents
 if [[ "$TOOL_NAME" == "Task" && "$SUBAGENT_TYPE" =~ ^(Explore|Plan)$ ]]; then
 
-  # Build the modified prompt with steering instructions prepended
-  STEERING_INSTRUCTION="IMPORTANT FIRST STEP: Before doing anything else, read the relevant .agents/steering files to understand project patterns and conventions. Use Glob to find files in .agents/steering/**/* then Read the domain-relevant context files (e.g., backend/patterns/context.md for API work, frontend/ for UI work).
+  # Skip if prompt already mentions context-prime (e.g., from /prime command)
+  if [[ "$ORIGINAL_PROMPT" == *"context-prime"* ]]; then
+    echo '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"allow"}}'
+    exit 0
+  fi
 
-After reading steering context, proceed with the original task:
+  # Build the modified prompt with steering instructions prepended
+  STEERING_INSTRUCTION="IMPORTANT FIRST STEP: Use the context-prime skill with mode=quick to load project conventions relevant to your task. This will read the .agents/steering files and give you a brief summary of coding patterns and conventions to follow.
+
+After loading context, proceed with the original task:
 
 "
 
