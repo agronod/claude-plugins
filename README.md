@@ -1,4 +1,4 @@
-# Team Plugins Marketplace
+# Agronod Plugins Marketplace
 
 A Claude Code plugin marketplace for team/organization use.
 
