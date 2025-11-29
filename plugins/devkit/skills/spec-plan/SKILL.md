@@ -59,7 +59,7 @@ Can you define success criteria? Do you see a path forward?
 - Confidence thresholds:
   * ≥ 0.8: **PROCEED** with specification creation
   * 0.7-0.8: **PROCEED** with noted assumptions
-  * < 0.7: **RECOMMEND** clarification or spec-prp skill
+  * < 0.7: **RECOMMEND** clarification or spec-requirements skill
 
 ### Step 4: Analyze Context
 
@@ -98,8 +98,8 @@ Consider the core purpose, measurable goals, technical requirements, and user ne
 **IF CONFIDENCE IS LOW**:
 - **CREATE** minimal spec with gaps clearly noted
 - **HIGHLIGHT** what information is missing
-- **RECOMMEND**: "Consider using spec-prp skill for structured requirements gathering"
-- **ASK**: "Please provide more context about [specific gaps] or use spec-prp"
+- **RECOMMEND**: "Consider using spec-requirements skill for structured requirements gathering"
+- **ASK**: "Please provide more context about [specific gaps] or use spec-requirements"
 - **WAIT** for user to provide clarification or approve proceeding
 
 ### Step 7: Proceed with Specification
@@ -115,7 +115,7 @@ Consider the core purpose, measurable goals, technical requirements, and user ne
 2. **CREATE** the directory structure at `.agents/specs/[folder-name]/`
 3. **CHECK** if `1-requirements.md` exists in the folder:
    - **IF EXISTS**: Read and incorporate requirements into specification
-   - **IF NOT EXISTS**: Note that spec-prp can be used for structured requirements gathering
+   - **IF NOT EXISTS**: Note that spec-requirements can be used for structured requirements gathering
 4. **CREATE** the specification file at `.agents/specs/[folder-name]/2-plan.md`
 5. **REPORT**: ✅ Specification saved to `.agents/specs/[folder-name]/2-plan.md`
 6. **ASK**: "Does this specification capture your intent? Ready to proceed with detailed implementation planning?"
